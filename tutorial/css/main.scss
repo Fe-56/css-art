@@ -1,0 +1,20 @@
+body {
+  background: #5ca2c6;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.head {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 10px solid black;
+}
