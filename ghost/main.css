@@ -1,0 +1,205 @@
+:root {
+  --container_size: 400px;
+  --body_height: 230px;
+  --body_width: 180px;
+  --border-width: 2px;
+  --leg-height: calc(var(--body_height)/100 * 20);
+  --heart_size: 15px;
+
+  --outline: 0 0 0 2px black inset;
+
+  --background_color: #f7f5ff;
+  --circle_color: #e7e0ff;
+  --body_color: #ffdce0;
+  --eye_inner_color: #fbfff7;
+  --eye_color: #000000;
+  --heart_color: #fe373a;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color: var(--background_color);
+}
+
+.container {
+  background-color: var(--circle_color);
+  height: var(--container_size);
+  width: var(--container_size);
+  border-radius: 50%;
+  position: relative;
+}
+
+.body {
+  position: relative;
+  height: var(--body_height);
+  width: var(--body_width);
+  background-color: var(--body_color);
+  box-shadow: var(--outline);
+  border-radius: 
+    calc(var(--body_width)/100 * 45)
+    calc(var(--body_width)/100 * 45)
+    0 0;
+  ;
+  top: calc(var(--container_size)/2 - var(--body_height)/2);
+  left: calc(var(--container_size)/2 - var(--body_width)/2);
+  clip-path: inset(0 0 calc(var(--body_height)/100 * 25) 0);
+}
+
+.legs {
+  position: relative;
+  height: var(--leg-height);
+  width: var(--body_width);
+  left: calc(var(--container_size)/2 - var(--body_width)/2);
+  top: 27px;
+}
+
+.leg {
+  position: absolute;
+  height: var(--leg-height);
+  width: calc(var(--body_width)/4);
+  background-color: var(--body_color);
+  box-shadow: var(--outline);
+  border-radius:
+    0 0
+    calc(var(--body_width)/2)
+    calc(var(--body_width)/2)
+  ;
+  clip-path: inset(var(--border-width) 0 0 0);
+}
+
+.leg-1 {
+  position: relative;
+  bottom: var(--border-width)
+}
+
+.leg-2 {
+  position: relative;
+  bottom: calc(var(--leg-height) + var(--border-width));
+  left: calc(var(--body_width)/4);
+}
+
+.leg-3 {
+  position: relative;
+  bottom: calc(var(--leg-height) * 2 + var(--border-width));
+  left: calc(var(--body_width)/4 * 2);
+}
+
+.leg-4 {
+  position: relative;
+  bottom: calc(var(--leg-height) * 3 + var(--border-width));
+  left: calc(var(--body_width)/4 * 3);
+}
+
+.eyes {
+  position: relative;
+  height: calc(var(--body_height) / 6);
+  width: var(--body_width);
+  top: calc(var(--body_height) / 3.5);
+}
+
+.eye {
+  position: relative;
+  background-color: var(--eye_color);
+  height: calc(var(--body_height) / 6);
+  width: calc(var(--body_height) / 6);
+  border-radius: 50%;
+}
+
+.eye-left {
+  position: relative;
+  left: 30px;
+}
+
+.eye-right {
+  position: relative;
+  left: calc(var(--body_width) - 65px);
+  bottom: calc(var(--body_height) / 6);
+}
+
+.eye-inner {
+  position: relative;
+  background-color: var(--eye_inner_color);
+  height: calc(var(--body_height) / 10);
+  width: calc(var(--body_height) / 10);
+  border-radius: 50%;
+  left: 10px;
+}
+
+.mouth {
+  position: relative;
+  border: var(--border-width) black solid;
+  bottom: 65px;
+  width: calc(var(--body_width) / 6);
+  height: calc(var(--body_width) / 6);
+  border-radius: 50%;
+  clip-path: inset(calc(var(--body_width) / 10) 0 0 0);
+  left: 75px;
+}
+
+.arms {
+  position: relative;
+  height: calc(var(--body_height) / 4);
+  width: var(--body_width);
+  bottom: calc(var(--body_height) / 4);
+}
+
+.arm {
+  position: relative;
+  border: var(--border-width) black solid;
+  height: calc(var(--body_height) / 6);
+  width: calc(var(--body_height) / 8);
+  border-radius: 0 0 20px 20px;
+  clip-path: inset(calc(var(--body_width) / 25) 0 0 0);
+}
+
+.arm-left {
+  position: relative;
+  left: 30px;
+  transform: rotate(-45deg)
+}
+
+.arm-right {
+  position: relative;
+  left: calc(var(--body_width) - 65px);
+  bottom: calc(var(--body_height) / 6);
+  transform: rotate(45deg)
+}
+
+.heart-container {
+  position: absolute;
+  height: var(--heart_size);
+  width: var(--body_width);
+  transform: rotate(-15deg);
+  top: 20px;
+}
+
+.heart {
+  position: absolute;
+  width: var(--heart_size);
+  height: var(--heart_size);
+  background-color: var(--heart_color);
+  left: calc(var(--body_width) - 50px);
+  top: 30px;
+  transform: rotate(-45deg);
+
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    width: var(--heart_size);
+    height: var(--heart_size);
+    background-color: var(--heart_color);
+    border-radius: 50%;
+  }
+
+  &::before {
+    bottom: calc(var(--heart_size) / 2);
+  }
+
+  &::after {
+    left: calc(var(--heart_size) / 2);
+  }
+}
